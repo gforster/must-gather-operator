@@ -40,6 +40,12 @@ spec:
 
 in this example we are using a specific service account (which must have cluster admin permissions as per must-gather requirements) and we are specifying a couple of additional must gather images to be run for the `kubevirt` and `ocs` subsystem. If not specified serviceAccountRef.Name will default to `default`. Also the standard must gather image: `quay.io/openshift/origin-must-gather:latest` is always added by default.
 
+The `case-management-creds` secret can be generated like this:
+
+```
+oc create secret generic case-management-creds -n must-gather-operator --from-literal='username=<username>' --from-literal='password=<password>'
+```
+
 ## Proxy Support
 
 The MustGather operator supports using a proxy. The proxy setting can be specified in the MustGather object. If not specified, the cluster default proxy setting will be used. Here is an example:
